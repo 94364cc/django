@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djangoTest',
+    'depotapp',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -58,8 +59,12 @@ WSGI_APPLICATION = 'my_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django',
+        'USER': 'root',
+        'PASSWORD': '000000',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
