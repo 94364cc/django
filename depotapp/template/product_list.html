@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}产品列表 {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h2>产品列表</h2>
+        </div>
+    </div>
+    {% for item in product_list %}
+        <div class="row" style="padding-top: 10">
+{#            <div class="span3 media-grid">#}
+{#                <a href="#">#}
+{#                    <img class="thumbnail" src="{{ item.image_url }}" alt="">#}
+{#                </a>#}
+{#            </div>#}
+        </div>
+        <div class="span_two_thirds">
+            <h4>{{ item.title }}</h4>
+            {{ item.description }}
+        </div>
+        <div class="span2" style="align:right">
+            <p><a class="btn primary" href="｛% url depotapp.views.view_product item.id %}">查看</a></p>
+            <p><a class="btn success" href="｛% url depotapp.views.edit_product item.id %}">编辑</a></p>
+            <p><a class="btn danger" href="#">删除</a></p>
+        </div>
+    {% endfor%}
+    <p>
+        <a href="url depotapp.views.create_product">新增产品</a>
+    </p>
+{% endblock %}
