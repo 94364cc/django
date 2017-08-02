@@ -19,8 +19,8 @@
             {{ item.description }}
         </div>
         <div class="span2" style="align:right">
-            <p><a class="btn primary" href="｛% url depotapp.views.view_product item.id %}">查看</a></p>
-            <p><a class="btn success" href="｛% url depotapp.views.edit_product item.id %}">编辑</a></p>
+            <p><a class="btn primary" href="{% url 'depotapp.views.view_product' item.id %}">查看</a></p>
+            <p><a class="btn success" href="{% url 'depotapp.views.edit_product' item.id %}">编辑</a></p>
             <p><a class="btn danger" href="#">删除</a></p>
         </div>
     {% endfor%}
