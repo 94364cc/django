@@ -1,6 +1,15 @@
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-</head>
+{% extends "base.html" %}
+{% block title %} 产品查看 {% endblock %}
+{% block content%}
+    <div class="container">
+        <div class="page-header">
+            <h2>产品查看</h2>
+        </div>
+    </div>
+    <div class="span_two_thirds">
+        <h4>{{ product_instance.title }}</h4>
+        描述:{{ product_instance.description }}
+        价格:{{ product_instance.price }}
+    </div>
+{% endblock %}
 
-<p>产品查看</p>

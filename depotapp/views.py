@@ -5,10 +5,6 @@ from django.template import loader,Context,RequestContext
 from django import forms
 # -*- coding:utf-8 -*-
 
-
-
-# Create your views here.
-
 def product_list(request):
     product_list=Product.objects.all()
     t=loader.get_template('product_list.html')
@@ -19,7 +15,6 @@ def create_product(request,id):
     return '1'
 
 def view_product(request,id):
-    assert False
     product_instance=Product.objects.get(id=id)
     t=loader.get_template('view_product.html')
     c=RequestContext(request,locals())
