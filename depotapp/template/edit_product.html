@@ -1,6 +1,17 @@
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-</head>
+{% block title %} 修改产品 {% endblock %}
+{% block content %}
 
-<p>修改产品</p>
+    <h2>修改产品</h2>
+
+    <table>
+        <form action="/depotapp/product/update/" method="POST">{% csrf_token %}
+            {{ form }}
+            <tr>
+                <td colspan="2" align="left"><input type="submit" value="提交"></td>
+            </tr>
+        </form>
+    </table>
+
+
+
+{% endblock %}
