@@ -10,5 +10,7 @@ urlpatterns = patterns('',
     (r'product/edit/(?P<id>[^/]+)/$',edit_product),
     (r'product/view/(?P<id>[^/]+)/$',view_product),
     (r'product/update/$',update_product),
+    (r'product/delete/(?P<id>[^/]+)$',delete_product),
+    (r'product/add/$',add_product),
 
 )

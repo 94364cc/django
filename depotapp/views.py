@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import request,HttpResponse
 from depotapp.models import Product
 from django.template import loader,Context,RequestContext
@@ -12,8 +12,22 @@ def product_list(request):
     html=t.render(Context({"product_list":product_list}))
     return HttpResponse(html)
 
-def create_product(request,id):
-    return '1'
+def create_product(request):
+    form=ProductForm(request.POST or None)
+
+    if form.is_valid:
+        form=ProductForm
+    return render_to_response('create_product.html',locals())
+
+def add_product(request):
+    title=request.POST['title']
+    description=request.POST['description']
+    price=request.POST['price']
+    image_url=request.POST['image_url']
+    Product.objects.create(title=title,description=description,price=price,image_url=image_url)
+
+    product_list=Product.objects.all()
+    return render_to_response('product_list.html',{'product_list':product_list})
 
 def view_product(request,id):
     product_instance=Product.objects.get(id=id)
@@ -31,12 +45,18 @@ def edit_product(request,id):
 
 def update_product(request):
     if request.method=="POST":
-        #product_id=request.POST['id']
+        product_id=request.POST['id']
         title=request.POST['title']
         description=request.POST['description']
         price=request.POST['price']
 
         Product.objects.filter(title=title).update(description=description,price=price)
 
+    product_list=Product.objects.all()
+    return render_to_response('product_list.html',{'product_list':product_list})
+
+def delete_product(request,id):
+    product=get_object_or_404(Product,pk=id)
+    product.delete()
     product_list=Product.objects.all()
     return render_to_response('product_list.html',{'product_list':product_list})
